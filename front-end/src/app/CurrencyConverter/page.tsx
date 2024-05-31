@@ -49,6 +49,7 @@ const CurrencyConverter = () => {
           `http://localhost:3000/currency/aud-to-bdt/${audAm}`
         );
         setConvertAm(res.data);
+        reset();
       } catch (error) {
         console.error("Error fetching :", error);
       }
@@ -66,6 +67,7 @@ const CurrencyConverter = () => {
           `http://localhost:3000/currency/cad-to-bdt/${cadAm}`
         );
         setConvertAm(res.data);
+        reset();
       } catch (error) {
         console.error("Error fetching :", error);
       }
@@ -84,6 +86,7 @@ const CurrencyConverter = () => {
             `http://localhost:3000/currency/inr-to-bdt/${inrAm}`
           );
           setConvertAm(res.data);
+          reset();
         } catch (error) {
           console.error("Error fetching :", error);
         }
@@ -100,6 +103,7 @@ const CurrencyConverter = () => {
             `http://localhost:3000/currency/eur-to-bdt/${eurAm}`
           );
           setConvertAm(res.data);
+          reset();
         } catch (error) {
           console.error("Error fetching :", error);
         }
@@ -116,6 +120,7 @@ const CurrencyConverter = () => {
             `http://localhost:3000/currency/usd-to-bdt/${usAm}`
           );
           setConvertAm(res.data);
+          reset();
         } catch (error) {
           console.error("Error fetching :", error);
         }
@@ -129,7 +134,7 @@ const CurrencyConverter = () => {
     <div>
       {/* Open the modal using document.getElementById('ID').showModal() method */}
       <button
-       className="btn text-3xl font-bold bg-white hover:bg-[#38B6FF] text-[#F7B030] shadow-xl hover:text-white shadow-[#F7B030]"
+        className="btn text-3xl font-bold bg-white hover:bg-[#38B6FF] text-[#F7B030] shadow-xl hover:text-white shadow-[#F7B030]"
         onClick={() => document.getElementById("my_modal_5").showModal()}
       >
         Convert Your Currency
@@ -151,8 +156,11 @@ const CurrencyConverter = () => {
               <h1 className="text-2xl font-bold text-[#F7B030]">
                 --Currency Converter--{" "}
               </h1>
-              <div className="text-green-500 font-semibold text-xl">Converted Amount:
-              <span className=" text-[#38B6FF] font-bold">Tk-{convertAm}</span>
+              <div className="text-green-500 font-semibold text-xl">
+                Converted Amount:
+                <span className=" text-[#38B6FF] font-bold">
+                  Tk-{convertAm}
+                </span>
               </div>
             </p>
             <div className="modal-action">
@@ -204,7 +212,16 @@ const CurrencyConverter = () => {
           </div>
         </dialog>
       ) : (
-        "prerenderd"
+        <div >
+          <span className="loading loading-spinner text-primary"></span>
+          <span className="loading loading-spinner text-secondary"></span>
+          <span className="loading loading-spinner text-accent"></span>
+          <span className="loading loading-spinner text-neutral"></span>
+          <span className="loading loading-spinner text-info"></span>
+          <span className="loading loading-spinner text-success"></span>
+          <span className="loading loading-spinner text-warning"></span>
+          <span className="loading loading-spinner text-error"></span>
+        </div>
       )}
     </div>
   );

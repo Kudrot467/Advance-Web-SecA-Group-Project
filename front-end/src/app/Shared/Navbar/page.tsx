@@ -22,23 +22,7 @@ const Navbar = () => {
       route: "Home",
       path: "/",
     },
-    {
-      route: "registration",
-      path: "/registration",
-    },
   ];
-  // useEffect(() => {
-  //   const fetchUsers = async () => {
-  //     try {
-  //       const res = await axios.get('http://localhost:3000/users'); // Adjust the endpoint URL as needed
-  //       setUsers(res.data);
-  //     } catch (error) {
-  //       console.error('Error fetching users:', error);
-  //     }
-  //   };
-
-  //   fetchUsers();}, []);
-  //   const loggedInUser=users.find(User=>User.email===user?.email);
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -87,11 +71,25 @@ const Navbar = () => {
                     {item.route}
                   </button>
                 </Link>
+                {
+                  !users?.email && <Link href="/registration">
+                  <button className="btn text-lg hover:text-xl font-medium rounded-xl text-white bg-[#F7B030] hover:bg-[#38B6FF]">
+                    Registration
+                  </button>
+                </Link>
+                }
+                {
+                  !users?.email && <Link href="/login">
+                  <button className="btn text-lg hover:text-xl font-medium rounded-xl text-white bg-[#F7B030] hover:bg-[#38B6FF]">
+                    Login
+                  </button>
+                </Link>
+                }
               </div>
             ))}
           </ul>
         </div>
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center pl-6">
           <img
             src="https://i.ibb.co/MhD3Pbf/trip-nest-logo-removebg-preview.png"
             className="h-[90px] w-[120px]"
@@ -111,6 +109,13 @@ const Navbar = () => {
                   {item.route}
                 </button>
               </Link>
+              {
+                  !users?.email && <Link href="/registration">
+                  <button className="btn text-lg hover:text-xl font-medium rounded-xl text-white bg-[#F7B030] hover:bg-[#38B6FF]">
+                    Registration
+                  </button>
+                </Link>
+                }
             </div>
           ))}
         </ul>
@@ -171,7 +176,7 @@ const Navbar = () => {
           <>
             {" "}
             <Link
-             className="btn text-lg hover:text-xl font-medium rounded-xl text-white bg-[#F7B030] hover:bg-[#38B6FF]"
+             className="btn text-lg hover:text-xl hidden lg:flex font-medium rounded-xl text-white bg-[#F7B030] hover:bg-[#38B6FF]"
              href="/login"
             >
              Login
